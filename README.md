@@ -15,7 +15,8 @@ cd C:\Cesta\K\Instalaci
 pip install -r requirements.txt
 ```
 To zaručí instalaci potřebných knihoven pro hru.
-Pak už stačí jenom hru spustit:
+Následně přidejte informace o MySQL serveru do souboru `menu.py` - na začátku souboru je indikátor, kam údaje o serveru vepsat.
+Pak už stačí jenom hru spustit v příkazovém řádku:
 ```
 python menu.py
 ```
