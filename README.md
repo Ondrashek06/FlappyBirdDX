@@ -21,3 +21,5 @@ Pak už stačí jenom hru spustit v příkazovém řádku:
 python menu.py
 ```
 Hodně štěstí!
+# Patch Notes
+Viz stránka https://xeon.spskladno.cz/~slechtao/FlappyBirdDX/updates.php

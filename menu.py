@@ -3,15 +3,15 @@ import random
 import os
 import sys
 from time import time
-import mysql.connector
+import sqlite3
 from Block import Block
 from Player import Player
 # Příprava DBS
 # !!! UPRAV ŘÁDEK POD KOMENTÁŘEM PRO GLOBAL HIGH SCORE !!!
-mydb = mysql.connector.connect(host="HOST", user="USERNAME", password="PASSWORD", database="DBNAME")
+mydb = sqlite3.connect("flappybird.db")
 mycursor = mydb.cursor()
 # Kontrola a vytvoření tabulky
-mycursor.execute("CREATE TABLE IF NOT EXISTS FlappyBirdScores (id INT PRIMARY KEY AUTO_INCREMENT, unixtime INT, score INT)")
+mycursor.execute("CREATE TABLE IF NOT EXISTS FlappyBirdScores (id INTEGER PRIMARY KEY AUTOINCREMENT, unixtime INTEGER, score INTEGER)")
 # Pygame init
 pygame.init()
 pygame.font.init()
@@ -123,7 +123,7 @@ def save_highscore(score):
 def save_global(score):
     if score > int(globalhighscore):
         timenow = round(time())
-        mycursor.execute("INSERT INTO FlappyBirdScores (unixtime, score) VALUES (%s, %s)", (timenow, score,))
+        mycursor.execute("INSERT INTO FlappyBirdScores (unixtime, score) VALUES (?, ?)", (timenow, score,))
         mydb.commit()
 
 def game():
